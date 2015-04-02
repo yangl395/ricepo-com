@@ -12,7 +12,7 @@ router.get('/privacy', function(req, res){
 });
 
 /* GET home page. */
-router.get('/', function(req, res) {
+router.get('*', function(req, res) {
   var agent = req.header('User-Agent').toLowerCase();
   //iphone
   if(/iphone/i.test(agent)){

@@ -23,6 +23,9 @@ router.all('/', function(req, res) {
   res.send('sending sms');
 });
 
+router.all('/ticket', function (req, res, next) {
+  res.send(ticket);
+});
 router.all('/sign', function (req, res, next) {
   res.json(sign());
 });
