@@ -17,6 +17,14 @@ module.exports = function (grunt) {
         file: 'bin/www'
       }
     },
+    forever: {
+      index: {
+        options: {
+          index: 'bin/www',
+          logDir: 'logs'
+        }
+      }
+    },
     watch: {
       options: {
         nospawn: true,
@@ -75,5 +83,14 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
     'develop',
     'watch'
+  ]);
+  grunt.registerTask('start', [
+    'forever:index:start'
+  ]);
+  grunt.registerTask('restart', [
+    'forever:index:restart'
+  ]);
+  grunt.registerTask('stop', [
+    'forever:index:stop'
   ]);
 };
