@@ -8,7 +8,7 @@ var Q = require('q');
 var ticket, signature;
 
 var appId = 'wxa40f507374970ea0',
-  secret = 'c25a01dfd0098ab00b6355ef7256701d';
+    secret = 'c25a01dfd0098ab00b6355ef7256701d';
 
 //for wechat
 router.all('/', function(req, res) {
