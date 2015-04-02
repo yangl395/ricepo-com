@@ -1,12 +1,46 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width">
-  <title><%-title %></title>
-  <link rel="stylesheet" href="/css/style.css">
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="/components/fullpage.js/jquery.fullPage.css" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  
   <% if (ENV_DEVELOPMENT) { %>
     <script src="http://localhost:35729/livereload.js"></script>
   <% } %>
+
+  <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+  <!-- This following line is needed only in case of using other easing effect rather than "linear", "swing" or "easeInQuart". You can also add the full jQuery UI instead of this file if you prefer -->
+  <script src="/components/fullpage.js/vendors/jquery.easings.min.js"></script>
+
+
+  <!-- This following line needed in the case of using the plugin option `scrollOverflow:true` -->
+  <script type="text/javascript" src="/components/fullpage.js/vendors/jquery.slimscroll.min.js"></script>
+
+  <script type="text/javascript" src="/components/fullpage.js/jquery.fullPage.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#fullpage').fullpage({
+        sectionsColor: ['#FF6346', '#FFB543', '#FF6602', '#FF6666', '#FF6346'],
+        anchors: ['p0', 'p1', 'p2', 'p3', 'p4'],
+        menu: '#menu',
+        scrollingSpeed: 1000,
+        //navigation: true,
+        //navigationPosition: 'right',
+        //responsive: 900,
+      });
+    });
+  </script>
+
+  <style>
+  </style>
+  
 </head>
 <body>

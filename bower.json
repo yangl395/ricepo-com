@@ -5,5 +5,8 @@
     "**/.*",
     "node_modules",
     "components"
-  ]
+  ],
+  "dependencies": {
+    "fullpage.js": "~2.6.3"
+  }
 }
