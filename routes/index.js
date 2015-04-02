@@ -1,8 +1,17 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
 
+//terms
+router.get('/terms', function(req, res){
+  res.render('terms');
+});
+//privacy
+router.get('/privacy', function(req, res){
+  res.render('privacy');
+});
+
+/* GET home page. */
 router.get('/', function(req, res) {
   var agent = req.header('User-Agent').toLowerCase();
   //iphone
