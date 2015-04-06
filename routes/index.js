@@ -10,6 +10,10 @@ router.get('/terms', function(req, res){
 router.get('/privacy', function(req, res){
   res.render('privacy');
 });
+//wechat lucky money
+router.get('/coupon', function(req, res){
+  res.render('coupon');
+});
 
 /* GET home page. */
 router.get('*', function(req, res) {

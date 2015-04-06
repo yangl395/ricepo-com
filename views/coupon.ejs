@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- This following line needed in the case of using the plugin option `scrollOverflow:true` -->
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+    <script>
+    var config = {
+debug: true,
+appId: "wxa40f507374970ea0",
+timestamp: 1428346056482,
+nonceStr: "ricepo",
+signature: "15f15c3c848dfc815117889b197eec8fdd1c3a7d",
+jsApiList: [
+"onMenuShareTimeline",
+"onMenuShareAppMessage"
+]
+};
+    wx.config(config);
+    wx.ready(function(){
+      wx.onMenuShareTimeline({
+        title: 'this is ricepo', // 分享标题
+        link: 'http://google.com',
+        imgUrl: '分享图标的url,以http或https开头' // 分享图标
+      });
+    });
+    wx.error(function(){
+      console.log('error');
+    });
+    </script>
+
+    <!-- style -->
+    <style>
+    </style>
+  </head>
+
+  <body>
+  test
+  </body>
+
+</html>
