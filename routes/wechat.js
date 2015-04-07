@@ -53,21 +53,39 @@ function getTicket () {
     });
 }
 
-function sign () {
-  var timestamp = Date.now();
-  var noncestr = 'ricepo';
-  var jsapi_ticket = ticket;
-  var url = 'http://ricepo.com/wechat/coupon'
-  var str = 'jsapi_ticket=' + jsapi_ticket + '&noncestr=' + noncestr + '&timestamp=' + timestamp + '&url=' + url;
-  signature = sha1(str);
-  return {
-    debug: true,
-    appId: appId,
-    timestamp: timestamp,
-    nonceStr: noncestr,
-    signature: signature,
-    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
+function raw(args) {
+  var keys = Object.keys(args);
+  keys = keys.sort()
+  var newArgs = {};
+  keys.forEach(function (key) {
+    newArgs[key.toLowerCase()] = args[key];
+  });
+
+  var string = '';
+  for (var k in newArgs) {
+    string += '&' + k + '=' + newArgs[k];
+  }
+  string = string.substr(1);
+  return string;
+};
+
+function sign (url) {
+  var ret = {
+    jsapi_ticket: ticket,
+    nonceStr: Math.random().toString(36).substr(2, 15),
+    timestamp: parseInt(new Date().getTime() / 1000) + '',
+    url: url || 'http://ricepo.com/wechat/coupon'
   };
+  var string = raw(ret);
+      jsSHA = require('jssha');
+      shaObj = new jsSHA(string, 'TEXT');
+  ret.signature = shaObj.getHash('SHA-1', 'HEX');
+  ret.debug = true,
+  ret.appId = appId,
+  ret.jsApiList = ['onMenuShareTimeline', 'onMenuShareAppMessage']
+
+  console.log(ret);
+  return ret;
 }
 
 function get (url) {

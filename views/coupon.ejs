@@ -14,13 +14,9 @@
     wx.ready(function(){
       wx.checkJsApi({
         jsApiList: ['onMenuShareAppMessage','onMenuShareTimeline'], 
-        success: function(res) {
-        },
-        fail: function() {
-          alert('check api failed');
-        },
+        success: function(res) {},
+        fail: function() {alert('check api failed'); },
       });
-      alert(wx.onMenuShareAppMessage ? 'true' : 'false');
       wx.onMenuShareAppMessage({
         title: 'Ricepo', 
         desc: 'this is ricepo', 
