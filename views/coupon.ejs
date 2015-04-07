@@ -13,10 +13,13 @@
     wx.config(<%- JSON.stringify(sign) %>);
     wx.ready(function(){
       wx.checkJsApi({
-        jsApiList: ['onMenuShareAppMessage'], 
+        jsApiList: ['onMenuShareAppMessage','onMenuShareTimeline'], 
         success: function(res) {
           alert(res);
-        }
+        },
+        fail: function() {
+          alert('check api failed');
+        },
       });
       wx.onMenuShareAppMessage({
         title: 'Ricepo', 
@@ -25,6 +28,9 @@
         imgUrl: 'http://ricepo.com/img/p4.png', 
         success: function () { 
           alert('share success');
+        },
+        fail: function() {
+          alert('share failed');
         },
         cancel: function () { 
           alert('share cancelled')
