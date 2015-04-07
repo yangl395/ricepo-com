@@ -15,7 +15,7 @@
       wx.checkJsApi({
         jsApiList: ['onMenuShareAppMessage','onMenuShareTimeline'], 
         success: function(res) {
-          alert(res);
+          alert(JSON.stringify(res));
         },
         fail: function() {
           alert('check api failed');
