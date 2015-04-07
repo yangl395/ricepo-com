@@ -1,49 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- This following line needed in the case of using the plugin option `scrollOverflow:true` -->
-    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 
-    <script>
-    wx.config(<%- JSON.stringify(sign) %>);
-    wx.ready(function(){
-      wx.checkJsApi({
-        jsApiList: ['onMenuShareAppMessage','onMenuShareTimeline'], 
-        success: function(res) {},
-        fail: function() {alert('check api failed'); },
-      });
-      wx.onMenuShareAppMessage({
-        title: 'Ricepo', 
-        desc: 'this is ricepo', 
-        link: 'http://google.com', 
-        imgUrl: 'http://ricepo.com/img/p4.png', 
-        success: function () { 
-          alert('share success');
-        },
-        fail: function() {
-          alert('share failed');
-        },
-        cancel: function () { 
-          alert('share cancelled')
-        }
-      });
+  <!-- style -->
+  <style>
+  </style>
+</head>
+
+<body>
+<button id="share">Share Ricepo</button>
+</body>
+
+<!-- This following line needed in the case of using the plugin option `scrollOverflow:true` -->
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+wx.config(<%- JSON.stringify(sign) %>);
+wx.ready(function(){
+  wx.checkJsApi({
+    jsApiList: ['onMenuShareAppMessage','onMenuShareTimeline'], 
+    success: function(res) {},
+    fail: function() {alert('check api failed'); },
+  });
+  document.querySelector('#onMenuShareAppMessage').onclick = function () {
+    wx.onMenuShareAppMessage({
+      title: 'Ricepo', 
+      desc: 'this is ricepo', 
+      link: 'http://google.com', 
+      imgUrl: 'http://ricepo.com/img/p4.png', 
+      success: function () { 
+        alert('share success');
+      },
+      fail: function() {
+        alert('share failed');
+      },
+      cancel: function () { 
+        alert('share cancelled')
+      }
     });
-    wx.error(function(){
-    });
-    </script>
-
-    <!-- style -->
-    <style>
-    </style>
-  </head>
-
-  <body>
-  test
-  </body>
+  }
+});
+wx.error(function(){
+});
+</script>
 
 </html>
