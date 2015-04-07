@@ -74,7 +74,7 @@ function sign (url) {
     jsapi_ticket: ticket,
     nonceStr: Math.random().toString(36).substr(2, 15),
     timestamp: parseInt(new Date().getTime() / 1000) + '',
-    url: url || 'http://api.ricepo.com/wechat/coupon'
+    url: url || 'http://ricepo.com/wechat/coupon'
   };
   var string = raw(ret);
       jsSHA = require('jssha');
