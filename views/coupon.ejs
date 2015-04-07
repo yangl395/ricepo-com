@@ -22,7 +22,6 @@
 var config = <%- JSON.stringify(sign) %> ;
 wx.config(config);
 wx.ready(function(){
-  /*
   document.querySelector('#share').onclick = function () {
     wx.onMenuShareAppMessage({
       title: '互联网之子',
@@ -44,7 +43,6 @@ wx.ready(function(){
     });
     alert('已注册获取“发送给朋友”状态事件');
   };
-  */
   var shareData = {
     title: '微信JS-SDK Demo',
     desc: '微信JS-SDK,帮助第三方为用户提供更优质的移动web服务',
