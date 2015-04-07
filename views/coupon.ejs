@@ -12,15 +12,20 @@
     <script>
     wx.config(<%- JSON.stringify(sign) %>);
     wx.ready(function(){
-      alert('success');
-      wx.onMenuShareTimeline({
-        title: 'Ricepo Rocks', 
-        link: 'http://google.com',
-        imgUrl: 'http://ricepo.com/img/p4.png'
+      wx.onMenuShareAppMessage({
+        title: 'Ricepo', 
+        desc: 'this is ricepo', 
+        link: 'http://ricepo.com', 
+        imgUrl: 'http://ricepo.com/img/p4.png', 
+        success: function () { 
+          alert('share success');
+        },
+        cancel: function () { 
+          alert('share cancelled')
+        }
       });
     });
     wx.error(function(){
-      alert('error')
     });
     </script>
 
