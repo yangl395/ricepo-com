@@ -10,43 +10,35 @@
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 
     <script>
-    var img = 'http://ricepo.com/img/p4.png';
-    var link = 'http://google.com';
-    var con = 'this is ricepo';
-    var tit = 'Ricepo';
-    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
-      // 发送给好友
-      WeixinJSBridge.on('menu:share:appmessage', function (argv) {
-        alert('shareing');
-        WeixinJSBridge.invoke('sendAppMessage', {
-          "appid": "wxa40f507374970ea0",
-          "img_url": img,
-          "img_width": "160",
-          "img_height": "160",
-          "link": link,
-          "desc": con,
-          "title": tit
-        }, function (res) {
-        _report('send_msg', res.err_msg);
-        })
+    wx.config(<%- JSON.stringify(sign) %>);
+    wx.ready(function(){
+      wx.checkJsApi({
+        jsApiList: ['onMenuShareAppMessage','onMenuShareTimeline'], 
+        success: function(res) {
+        },
+        fail: function() {
+          alert('check api failed');
+        },
       });
-
-      // 分享到朋友圈
-      WeixinJSBridge.on('menu:share:timeline', function (argv) {
-        alert('shareing');
-        WeixinJSBridge.invoke('shareTimeline', {
-          "img_url": img,
-          "img_width": "160",
-          "img_height": "160",
-          "link": link,
-          "desc": con,
-          "title": tit
-        }, function (res) {
-        _report('timeline', res.err_msg);
-        });
+      alert(wx.onMenuShareAppMessage ? 'true' : 'false');
+      wx.onMenuShareAppMessage({
+        title: 'Ricepo', 
+        desc: 'this is ricepo', 
+        link: 'http://google.com', 
+        imgUrl: 'http://ricepo.com/img/p4.png', 
+        success: function () { 
+          alert('share success');
+        },
+        fail: function() {
+          alert('share failed');
+        },
+        cancel: function () { 
+          alert('share cancelled')
+        }
       });
     });
-
+    wx.error(function(){
+    });
     </script>
 
     <!-- style -->
