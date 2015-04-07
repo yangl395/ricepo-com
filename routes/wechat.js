@@ -29,6 +29,9 @@ router.all('/ticket', function (req, res, next) {
 router.all('/sign', function (req, res, next) {
   res.json(sign());
 });
+router.get('/coupon', function(req, res){
+  res.render('coupon', {sign: sign()});
+});
 
 function getTicket () {
   return get('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='+appId+'&secret='+secret)
@@ -54,7 +57,7 @@ function sign () {
   var timestamp = Date.now();
   var noncestr = 'ricepo';
   var jsapi_ticket = ticket;
-  var url = 'http://ricepo.com/coupon.html'
+  var url = 'http://ricepo.com/wechat/coupon'
   var str = 'jsapi_ticket=' + jsapi_ticket + '&noncestr=' + noncestr + '&timestamp=' + timestamp + '&url=' + url;
   signature = sha1(str);
   return {
