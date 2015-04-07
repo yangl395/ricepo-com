@@ -21,7 +21,7 @@
 <script>
 var config = <%- JSON.stringify(sign) %> ;
 alert(config);
-wx.config(config);
+wx.config(JSON.stringify(config));
 wx.ready(function(){
   wx.checkJsApi({
     jsApiList: ['onMenuShareAppMessage','onMenuShareTimeline'], 
