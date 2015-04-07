@@ -20,15 +20,8 @@
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
 var config = <%- JSON.stringify(sign) %> ;
-config.jsApiList = [];
-alert(JSON.stringify(config));
 wx.config(config);
 wx.ready(function(){
-  wx.checkJsApi({
-    jsApiList: ['onMenuShareAppMessage','onMenuShareTimeline'], 
-    success: function(res) {},
-    fail: function() {alert('check api failed'); },
-  });
   document.querySelector('#share').onclick = function () {
     wx.onMenuShareAppMessage({
       title: '互联网之子',
