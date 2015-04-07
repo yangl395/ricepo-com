@@ -12,6 +12,7 @@
     <script>
     wx.config(<%- JSON.stringify(sign) %>);
     wx.ready(function(){
+      alert('success');
       wx.onMenuShareTimeline({
         title: 'Ricepo Rocks', 
         link: 'http://google.com',
@@ -19,7 +20,7 @@
       });
     });
     wx.error(function(){
-      console.log('error');
+      alert('error')
     });
     </script>
 
