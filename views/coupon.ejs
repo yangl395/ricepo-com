@@ -27,6 +27,7 @@ wx.ready(function(){
     fail: function() {alert('check api failed'); },
   });
   document.querySelector('#share').onclick = function () {
+    alert('clicked');
     wx.onMenuShareAppMessage({
       title: 'Ricepo', 
       desc: 'this is ricepo', 
