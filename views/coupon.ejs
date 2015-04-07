@@ -12,6 +12,12 @@
     <script>
     wx.config(<%- JSON.stringify(sign) %>);
     wx.ready(function(){
+      wx.checkJsApi({
+        jsApiList: ['onMenuShareAppMessage'], 
+        success: function(res) {
+          alert(res);
+        }
+      });
       wx.onMenuShareAppMessage({
         title: 'Ricepo', 
         desc: 'this is ricepo', 
