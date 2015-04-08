@@ -10,31 +10,17 @@
 
   <!-- style -->
   <style>
+  .noshow {
+    display: none;
+  }
   </style>
 </head>
 
 <body>
-  Ricepo Rocks
-  <img src="http://ricepo.com/img/p4.png" />
+  <div class="noshow"><img src="http://ricepo.com/img/icon.png" /></div>
 </body>
 
-<!-- This following line needed in the case of using the plugin option `scrollOverflow:true` -->
-<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
-var config = <%- JSON.stringify(sign) %> ;
-wx.config(config);
-wx.ready(function(){
-  var shareData = {
-    title: '微信JS-SDK Demo',
-    desc: '微信JS-SDK,帮助第三方为用户提供更优质的移动web服务',
-    link: 'http://ricepo.com/wechat/coupon',
-  };
-  wx.onMenuShareAppMessage(shareData);
-  wx.onMenuShareTimeline(shareData);
-});
-wx.error(function (res) {
-  alert(res.errMsg);
-});
 </script>
 
 </html>
