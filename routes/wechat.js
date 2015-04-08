@@ -30,7 +30,7 @@ router.all('/sign', function (req, res, next) {
   res.json(sign());
 });
 router.get('/coupon', function(req, res){
-  res.render('coupon', {sign: sign()});
+  res.render('coupon', {sign: sign('http://ricepo.com' + req.originalUrl)});
 });
 
 function getTicket () {
