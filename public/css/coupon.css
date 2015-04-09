@@ -4,47 +4,21 @@
 
 html, body {
 	overflow: hidden;
+	color: white;
 }
 
 body {
   background: #FF6346;
   text-align: center;
+  font-family: 'Helvetica Neue', Tahoma;
 }
 
 #cart {
-	-webkit-transition: all 0.1s;
-	position: absolute;
-	bottom: 0;
-	width: 20vw;
-	height: 10vw;
-	background: url('/img/ricepo.png');
-	background-size: cover;
-	-webkit-transform: translateX(100px);
+	margin-top: 30vh;
+	width: 50vw;
 }
 
-.shake {
-  -webkit-animation: shake 3s ease-in 0s 3;
-  position: absolute;
-  width: 10vw;
+#result {
+	font-size: 50px;
 }
 
-@-webkit-keyframes shake {
-  0% { -webkit-transform: rotate(0deg); }
-  10% { -webkit-transform: rotate(-45deg); }
-  30% { -webkit-transform: rotate(45deg); }
-  50% { -webkit-transform: rotate(-45deg); }
-  70% { -webkit-transform: rotate(45deg); }
-  90% { -webkit-transform: rotate(-45deg); }
-  100% { -webkit-transform: rotate(0deg); }
-}
-
-@-webkit-keyframes shake {
-  0% { 
-  	-webkit-transform: rotate(0deg); 
-  	top: 0;
-  }
-  100% { 
-  	-webkit-transform: rotate(720deg); 
-  	top: 100vh;
-  }
-}

@@ -13,35 +13,46 @@
 
 <body>
   <!-- for wechat share moment -->
-  <div id="cart" /></div>
+  <img src="/img/icon.png" id="cart" />
+  <div id="result"></div>
+  <div id="timer"></div>
 
   <script src="/components/hammer.js/hammer.min.js"></script>
   <script>
-  var width = window.innerWidth;
+  var tap = 0;
+  var time = 10;
   var cart = document.getElementById('cart');
+  var result = document.getElementById('result');
+  var timer = document.getElementById('timer');
+  var clock;
+  var lock = true;
   var mc = new Hammer(cart, {});
-  mc.get('pan').set({ direction: Hammer.DIRECTION_HORIZONTAL });
-  mc.on("pan", handlePan);
-  function handlePan (e) {
-    cart.style.webkitTransform = 'translateX('+ (100 + e.deltaX) +'px)';
+  mc.on("tap", handleTap);
+  function handleTap () {
+    if (lock ) return;
+    result.innerHTML = tap ++ ;
   }
-  var ricepo = createRicepo();
-  function createRicepo () {
-    var img= new Image();
-    img.src = '/img/ricepo.png';
-    img.className = 'shake';
-    img.style.left = width * 0.05 + Math.random() * width * 0.9 + 'px';
-    //random timing
-    setTimeout(function () {
-      document.body.appendChild(img);
-      //auto destroy
-      setTimeout(function () {
-        document.body.removeChild(img);
-      }, 3000);
-      //next one
-      createRicepo();
-    }, Math.random() * 4000 + 1000);
-  }
+
+  //init
+  result.innerHTML = 3;
+  setTimeout(function () {
+    result.innerHTML = 2;
+  }, 1000);
+  setTimeout(function () {
+    result.innerHTML = 1;
+    clock = setInterval(function () {
+      timer.innerHTML = time -- ;
+      if ( time < 0 ) {
+        lock = true;
+        clearInterval(clock);
+      }
+    }, 1000);
+  }, 2000);
+  setTimeout(function () {
+    result.innerHTML = "GO";
+    lock = false;
+  }, 3000);
+
   </script>
 </body>
 
