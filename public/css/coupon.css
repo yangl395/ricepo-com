@@ -2,6 +2,10 @@
   display: none;
 }
 
+html, body {
+	overflow: hidden;
+}
+
 body {
   background: #FF6346;
   text-align: center;
