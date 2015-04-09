@@ -23,7 +23,6 @@
   mc.get('pan').set({ direction: Hammer.DIRECTION_HORIZONTAL });
   mc.on("pan", handlePan);
   function handlePan (e) {
-    console.log(e);
     cart.style.webkitTransform = 'translateX('+ (100 + e.deltaX) +'px)';
   }
   var ricepo = createRicepo();
