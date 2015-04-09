@@ -19,55 +19,101 @@
 
 <body>
   <!-- for wechat share moment -->
-  <img src="/img/icon.png" id="cart" />
+  <div id="ricepo">
+    <img src="/img/open.png" id="open" />
+  </div>
   <div id="result"></div>
-  <div id="timer"></div>
+  <div id="timer" style="margin-bottom: 20px"></div>
+  <div id="redeem" style="margin-bottom: 20px" class="noshow">发送优惠券到手机</div>
+  <div id="start">开始</div>
 
   <!--
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
   <script src="/components/hammer.js/hammer.min.js"></script>
   -->
   <script>
+  var audios = [];
+  var index = 0;
+  for (var i = 0 ;i < 5; i++) {
+    audios.push(new Audio('/img/add.mp3'));
+  }
+  function play() {
+    audios[index].play();
+    index  = (index + 1) % 5;
+  }
+  //disable the page scroll
   document.ontouchmove = function(event){
     event.preventDefault();
   }
-  var tap = 0;
-  var time = 10;
-  var cart = document.getElementById('cart');
+  var ricepo = document.getElementById('ricepo');
   var result = document.getElementById('result');
   var timer = document.getElementById('timer');
-  
-  var clock;
+  var start = document.getElementById('start');
+  var redeem = document.getElementById('redeem');
+
+  var money;
   var lock = true;
-  /*
-  var mc = new Hammer(cart, {});
-  mc.on("tap", handleTap);
-  */
-  cart.ontouchend = function handleTap () {
+
+  start.ontouchend = function handleTap () {
+    countDown();
+  }
+
+  ricepo.ontouchend = function handleTap () {
     if (lock ) return;
-    tap ++ ;
-    result.innerHTML = '$' + (tap / 20).toFixed(2);
+    money += 0.03 ;
+    updateMoney();
+    if ( money * 100 % 100 < 3) {
+      play();
+    }
+  }
+
+  function updateMoney() {
+    result.innerHTML = '$' + (money || 0).toFixed(2);
   }
 
   //init
-  result.innerHTML = 3;
-  setTimeout(function () {
-    result.innerHTML = 2;
-  }, 1000);
-  setTimeout(function () {
-    result.innerHTML = 1;
-    clock = setInterval(function () {
-      timer.innerHTML = time -- ;
-      if ( time < 0 ) {
-        lock = true;
-        clearInterval(clock);
+  function countDown ()  {
+    hide(start);
+    hide(redeem);
+    money = 0;
+    timer.innerHTML = '';
+    var count = 3;
+    result.innerHTML = count;
+    var counter = setInterval(function () {
+      count --;
+      if (count <= 0) {
+        result.innerHTML = "点饭宝";
+        clearInterval(counter);
+        timeDown();
+      }
+      else {
+        result.innerHTML = count ;
       }
     }, 1000);
-  }, 2000);
-  setTimeout(function () {
-    result.innerHTML = "GO";
+  }
+  function timeDown () {
     lock = false;
-  }, 3000);
+    var time = 100;
+    play();
+    var clock = setInterval(function () {
+      time --;
+      if ( time <= 0 ) {
+        lock = true;
+        end = true;
+        clearInterval(clock);
+        start.innerHTML = '再来一次';
+        show(start);
+        show(redeem);
+        timer.innerHTML = '0.0s';
+      }
+      else {
+        timer.innerHTML = (time/10).toFixed(1) + 's';
+      }
+    }, 100);
+  }
+
+  function show(ele) {ele.style.display = 'block'; }
+  function hide(ele) {ele.style.display = 'none'; }
 
   </script>
 </body>
