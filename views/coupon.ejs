@@ -4,8 +4,14 @@
   <meta charset="utf-8">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-  
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="full-screen" content="yes">
+  <meta name="screen-orientation" content="portrait">
+  <meta name="x5-fullscreen" content="true">
+  <meta name="360-fullscreen" content="true">
+
   <title>点击获取最高10元 Ricepo 抵用券</title>
   <link rel="stylesheet" type="text/css" href="/css/coupon.css" />
 
@@ -17,20 +23,30 @@
   <div id="result"></div>
   <div id="timer"></div>
 
+  <!--
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
   <script src="/components/hammer.js/hammer.min.js"></script>
+  -->
   <script>
+  document.ontouchmove = function(event){
+    event.preventDefault();
+  }
   var tap = 0;
   var time = 10;
   var cart = document.getElementById('cart');
   var result = document.getElementById('result');
   var timer = document.getElementById('timer');
+  
   var clock;
   var lock = true;
+  /*
   var mc = new Hammer(cart, {});
   mc.on("tap", handleTap);
-  function handleTap () {
+  */
+  cart.ontouchend = function handleTap () {
     if (lock ) return;
-    result.innerHTML = tap ++ ;
+    tap ++ ;
+    result.innerHTML = '$' + (tap / 20).toFixed(2);
   }
 
   //init
