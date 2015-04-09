@@ -4,20 +4,46 @@
   <meta charset="utf-8">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  
   <title>点击获取最高10元 Ricepo 抵用券</title>
+  <link rel="stylesheet" type="text/css" href="/css/coupon.css" />
 
-
-  <!-- style -->
-  <style>
-  .noshow {
-    display: none;
-  }
-  </style>
 </head>
 
 <body>
-  <div class="noshow"><img src="http://ricepo.com/img/icon.png" /></div>
+  <!-- for wechat share moment -->
+  <div id="cart" /></div>
+
+  <script src="/components/hammer.js/hammer.min.js"></script>
+  <script>
+  var width = window.innerWidth;
+  var cart = document.getElementById('cart');
+  var mc = new Hammer(cart, {});
+  mc.get('pan').set({ direction: Hammer.DIRECTION_HORIZONTAL });
+  mc.on("pan", handlePan);
+  function handlePan (e) {
+    console.log(e);
+    cart.style.webkitTransform = 'translateX('+ (100 + e.deltaX) +'px)';
+  }
+  var ricepo = createRicepo();
+  function createRicepo () {
+    var img= new Image();
+    img.src = '/img/ricepo.png';
+    img.className = 'shake';
+    img.style.left = width * 0.05 + Math.random() * width * 0.9 + 'px';
+    //random timing
+    setTimeout(function () {
+      document.body.appendChild(img);
+      //auto destroy
+      setTimeout(function () {
+        document.body.removeChild(img);
+      }, 3100);
+      //next one
+      createRicepo();
+    }, Math.random() * 4000 + 1000);
+  }
+  </script>
 </body>
 
 <script>
