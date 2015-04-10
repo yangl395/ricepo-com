@@ -140,11 +140,11 @@
       time --;
       if ( time <= 0 ) {
         lock = true;
-        end = true;
         clearInterval(clock);
         start.innerHTML = '再来一次';
         show(start);
         show(redeem);
+        document.title = '我[狂点饭宝]赢了$' + (money || 0).toFixed(2) + '订餐券!';
         timer.innerHTML = '0.0s';
       }
       else {
