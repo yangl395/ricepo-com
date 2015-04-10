@@ -12,25 +12,37 @@ html, body {
 body {
   background: #FF6346;
   text-align: center;
-  font-family: 'Helvetica Neue', Tahoma;
-	padding-top: 20vh ;
+	padding-top: 15vh ;
+	font-family: 'Avenir Next','Helvetica Neue', Roboto, sans-serif;
 }
 
 #ricepo{
-	height: 50vw;
-	text-align: left;
+	height: 30vh;
 }
 #ricepo img{
 	position:absolute;
-	margin: 0 25vw;
-	height: 50vw;
+	left : 50vw;
+	margin-left: -15vh;
+	height: 30vh;
+}
+
+.button,#ricepo img {
+	cursor: pointer;
 }
 
 #result{
+	height: 70px;
 	font-size: 50px;
 }
+#timer{
+	height: 22px;
+}
 
-#start,#redeem{
-	font-size: 30px;
+.button{
+	margin: 3vh 0;
+	height: 8vh;
+}
+.button img{
+	height : 100%;
 }
 
