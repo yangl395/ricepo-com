@@ -5,17 +5,25 @@
 html, body {
 	overflow: hidden;
 	color: white;
+	padding: 0;
+	margin: 0;
 }
 
 body {
   background: #FF6346;
   text-align: center;
   font-family: 'Helvetica Neue', Tahoma;
-	padding-top: 20vh;
+	padding-top: 20vh ;
 }
 
+#ricepo{
+	height: 50vw;
+	text-align: left;
+}
 #ricepo img{
-	width: 50vw;
+	position:absolute;
+	margin: 0 25vw;
+	height: 50vw;
 }
 
 #result{
