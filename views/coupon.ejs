@@ -64,6 +64,7 @@
   ];
 
   function showRicepo(index) {
+    console.log(index);
     if (index) {
       play();
     }
@@ -71,9 +72,11 @@
     index = index || 0;
     for (var i = 0 ;i < ricepos.length ; i ++) {
       if (i === index) {
-        return ricepos[i].style.display = 'block';
+        ricepos[i].style.display = 'block';
       }
-      ricepos[i].style.display = 'none';
+      else {
+        ricepos[i].style.display = 'none';
+      }
     }
   }
 
@@ -103,7 +106,6 @@
 
   function reset() {
     //reset image
-    showRicepo(0);
     hide(redeem);
     //timer
     timer.innerHTML = '';
@@ -113,6 +115,7 @@
 
   //init
   function countDown ()  {
+    showRicepo();
     reset();
     hide(start);
     var count = 3;
@@ -132,6 +135,7 @@
   function timeDown () {
     lock = false;
     var time = 100;
+    play();
     var clock = setInterval(function () {
       time --;
       if ( time <= 0 ) {
