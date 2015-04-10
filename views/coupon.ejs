@@ -64,7 +64,9 @@
   ];
 
   function showRicepo(index) {
-    play();
+    if (index) {
+      play();
+    }
     if (index > 4) {index = 4}
     index = index || 0;
     for (var i = 0 ;i < ricepos.length ; i ++) {
@@ -88,9 +90,9 @@
 
   ricepo.ontouchend = function handleTap () {
     if (lock ) return;
-    money += 0.05 ;
+    money += 0.03 ;
     updateMoney();
-    if ( money * 100 % 100 < 5) {
+    if ( money * 100 % 100 < 3) {
       showRicepo( parseInt(money) );
     }
   }
