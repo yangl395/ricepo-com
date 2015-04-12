@@ -11,8 +11,8 @@ router.get('/privacy', function(req, res){
   res.render('privacy');
 });
 //wechat lucky money
-router.get('/coupon', function(req, res){
-  res.render('coupon');
+router.get('/android', function(req, res){
+  res.download('public/build/Ricepo.apk');
 });
 
 /* GET home page. */
