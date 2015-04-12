@@ -68,6 +68,7 @@
   var sending = false;
   var number;
   var money;
+  var lucky = 3;
   var lock = true;
   var ricepos = [
     document.getElementById('r0'),
@@ -93,14 +94,22 @@
     }
   }
 
-  start.ontouchend = start.onclick = function handleTap () {
+  start.ontouchend = start.onclick = function () {
     countDown();
   }
-  retry.ontouchend = retry.onclick = function handleTap () {
+  retry.ontouchend = retry.onclick = function () {
+    var now = Date.now();
+    lucky = parseInt(Math.random()*2 + 2);
+    if (now % 5 == 0) {
+      lucky = 4;
+    }
+    if (now % 13 == 0) {
+      lucky = 5;
+    }
     countDown();
   };
 
-  resend.ontouchend = resend.onclick = function handleTap () {
+  resend.ontouchend = resend.onclick = function () {
     if (number && !sending) {
       sending = true;
       var url = host + "/coupon/columbus,oh/" + number + "/send";
@@ -121,11 +130,11 @@
     }
   };
 
-  redeem.ontouchend = redeem.onclick = function handleTap () {
+  redeem.ontouchend = redeem.onclick = function () {
     if (sending) {
       return;
     }
-    var phone = prompt('请输入您的手机号(可在OSU,Purdue,UIUC使用)');
+    var phone = prompt('请输入您的手机号: (优惠券可在OSU,Purdue,UIUC使用)');
     if (!phone) {return;}
 
     phone = phone.replace(/\D/g, "");
@@ -158,11 +167,11 @@
     xmlhttp.send();
   }
 
-  ricepo.ontouchend = ricepo.onclick = function handleTap () {
+  ricepo.ontouchend = ricepo.onclick = function () {
     if (lock ) return;
-    money += 0.03 ;
+    money += lucky / 100 ;
     updateMoney();
-    if ( money * 100 % 100 < 3) {
+    if ( money * 100 % 100 < lucky) {
       showRicepo( parseInt(money) );
     }
   }
@@ -211,7 +220,7 @@
         if (money) {
           show(redeem);
         }
-        document.title = '我狂点[饭宝] 赢了$' + (money || 0).toFixed(2) + '订餐优惠券!';
+        document.title = '我狂点[饭宝] 赢了$' + (money || 0).toFixed(2) + '中餐优惠券，晚饭有着落了！';
         timer.innerHTML = '0.0s';
       }
       else {
