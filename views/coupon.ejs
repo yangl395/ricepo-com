@@ -12,7 +12,7 @@
   <meta name="x5-fullscreen" content="true">
   <meta name="360-fullscreen" content="true">
 
-  <title>狂点饭宝 赢中餐外卖优惠券</title>
+  <title>狂点饭宝 赢中餐外卖优惠券 OSU Purdue UIUC</title>
   <link rel="stylesheet" type="text/css" href="/css/coupon.css" />
 
 </head>
@@ -37,6 +37,11 @@
   <div id="retry" class="noshow button"> <img src="/img/ricepo/retry.png" /> </div>
   <div id="redeem" class="noshow button"> <img src="/img/ricepo/send.png" /> </div>
   <div id="resend" class="noshow button"> <img src="/img/ricepo/resend.png" /> </div>
+  <div id="banner">
+    手机下载饭宝App 订地道中餐外卖
+    <br />
+    <span style="font-size: 80%;opacity: 0.8">OSU | Purdue | UIUC</span>
+  </div>
 
   <!--
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -120,7 +125,7 @@
     if (sending) {
       return;
     }
-    var phone = prompt('请输入您的手机号(仅限Columbus地区)');
+    var phone = prompt('请输入您的手机号(可在OSU,Purdue,UIUC使用)');
     if (!phone) {return;}
 
     phone = phone.replace(/\D/g, "");
@@ -225,6 +230,16 @@
     event.preventDefault();
   }
 
+
+  </script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61758050-1', 'auto');
+  ga('send', 'pageview');
 
   </script>
 </body>

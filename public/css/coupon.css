@@ -16,6 +16,14 @@ body {
 	font-family: 'Avenir Next','Helvetica Neue', Roboto, sans-serif;
 }
 
+#banner {
+	position: absolute;
+	width: 100%;
+	top : 10px;
+	font-size: 20px;
+	opacity: 0.8;
+}
+
 #ricepo{
 	height: 30vh;
 }
