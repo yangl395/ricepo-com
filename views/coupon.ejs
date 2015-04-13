@@ -109,7 +109,7 @@
     countDown();
   };
 
-  resend.ontouchend = resend.onclick = function () {
+  resend.ontouchend = function () {
     if (number && !sending) {
       sending = true;
       var url = host + "/coupon/columbus,oh/" + number + "/send";
@@ -130,7 +130,7 @@
     }
   };
 
-  redeem.ontouchend = redeem.onclick = function () {
+  redeem.ontouchend = function () {
     if (sending) {
       return;
     }
