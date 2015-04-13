@@ -131,7 +131,7 @@
   };
 
   redeem.ontouchend = function () {
-    if (sending) {
+    if (sending || number) {
       return;
     }
     var phone = prompt('请输入您的手机号: (优惠券可在OSU,Purdue,UIUC使用)');
