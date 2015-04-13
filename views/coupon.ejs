@@ -100,10 +100,10 @@
   retry.ontouchend = retry.onclick = function () {
     var now = Date.now();
     lucky = parseInt(Math.random()*2 + 2);
-    if (now % 5 == 0) {
+    if (now % 10 == 0) {
       lucky = 4;
     }
-    if (now % 20 == 0) {
+    if (now % 50 == 0) {
       lucky = 5;
     }
     countDown();
