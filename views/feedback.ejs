@@ -50,6 +50,8 @@
 
     <img width="60%" src="/img/p1.png"/>
 
+    <h3 id="thankyou" style="display:none"> 提交成功，Ricepo感谢您的回馈！ </h3>
+
     <form>
       <label for="category">我想要</label>
       <select id="category" name="category">
@@ -59,19 +61,51 @@
       </select>
 
       <label for="content">具体描述</label>
-      <textarea placeholder="希望Ricepo加一个新开张的川菜馆；我常吃的大盘鸡在菜单里找不到；APP有闪退现象" id="content"></textarea>
+      <textarea placeholder="希望Ricepo加一个新开张的川菜馆..." id="content" name="content"></textarea>
 
-      <label for="phone">联系电话(选填)<br/><small style="opacity:0.6;"> Ricepo可能会通过短信和您联系</small></label>
-      <input type="tel" placeholder="888.668.8521" id="phone" name="phone">
+      <% if(typeof phone == 'undefined' || !phone) { %>
+        <label for="phone">联系电话(选填)</label>
+        <input type="tel" placeholder="888.668.8521" id="phone" name="phone">
+        <p style="margin-top: -10px"> <small style="opacity:0.6;"> Ricepo可能会通过短信和您联系</small> </p>
+      <% } else { %>
+        <input type="hidden" name="phone" value="<%= phone %>" />
+      <% } %>
 
-      <input class="button-primary" style="float:right" type="submit" value="提交">
+      <input class="button-primary" id="submit" style="float:right" type="button" value="提交" />
     </form>
   </div>
 
   <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#submit').click(function() {
+        var data = {};
+        $('form').serializeArray().map(function(x){data[x.name] = x.value;});
+        if (!data.content) {
+          return alert('描述不能是空的..');
+        }
+        // Phone cannot be empty string
+        data.phone = data.phone || undefined;
+        $('#submit').attr('disabled','disabled');
+        $
+          .ajax({
+            type: 'POST',
+            url: 'http://staging.ricepo.com/v1/issues',
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+          })
+          .done(function() {
+            $('label,select,input,textarea,p').hide();
+            $('#thankyou').show();
+          })
+          .fail(function() {
+            alert('提交失败，请重试！');
+            $("#submit").removeAttr('disabled');
+          })
+      });
+    });
+  </script>
 </body>
 
-<script>
-</script>
 
 </html>
