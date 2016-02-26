@@ -101,6 +101,6 @@ function get (url) {
   return deferred.promise;
 }
 
-getTicket();
+//getTicket();
 
 module.exports = router;

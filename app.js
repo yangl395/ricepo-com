@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var wechat = require('./routes/wechat');
+var feedback = require('./routes/feedback');
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/wechat', wechat);
+app.use('/feedback', feedback);
 app.use('/', routes);
 
 /// catch 404 and forward to error handler

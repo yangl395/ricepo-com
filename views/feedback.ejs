@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="full-screen" content="yes">
+  <meta name="screen-orientation" content="portrait">
+
+  <title>Ricepo饭宝 - Feedback</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.1.0/milligram.min.css">
+  <style>
+  html, body {
+  	color: #FF6346;
+  	padding: 0;
+  	margin: 0;
+  }
+  body {
+    //text-align: center;
+  	padding: 5vh;
+  	//font-family: 'Avenir Next','Helvetica Neue', Roboto, sans-serif;
+  }
+  input, textarea, select {
+    transition: 0.3s;
+  }
+  input:focus, textarea:focus, select:focus {
+    border-color: #FF6346 !important;
+  }
+  label {
+    font-weight: 400;
+  }
+  input.button-primary {
+    border-color: #FF6346 !important;
+    background-color: #FF6346 !important;
+  }
+  .center {
+    text-align: center;
+  }
+  </style>
+
+</head>
+
+<body>
+  <div style="max-width:500px;margin: 0 auto;">
+    <h2> Ricepo 用户反馈 </h2>
+
+    <img width="60%" src="/img/p1.png"/>
+
+    <form>
+      <label for="category">我想要</label>
+      <select id="category" name="category">
+        <option value="general">给APP提出问题或建议</option>
+        <option value="add-restaurant">申请添加饭店</option>
+        <option value="edit-menu">更改 / 添加菜单</option>
+      </select>
+
+      <label for="content">具体描述</label>
+      <textarea placeholder="希望Ricepo加一个新开张的川菜馆；我常吃的大盘鸡在菜单里找不到；APP有闪退现象" id="content"></textarea>
+
+      <label for="phone">联系电话(选填)<br/><small style="opacity:0.6;"> Ricepo可能会通过短信和您联系</small></label>
+      <input type="tel" placeholder="888.668.8521" id="phone" name="phone">
+
+      <input class="button-primary" style="float:right" type="submit" value="提交">
+    </form>
+  </div>
+
+  <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+</body>
+
+<script>
+</script>
+
+</html>
