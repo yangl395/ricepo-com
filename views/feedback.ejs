@@ -52,7 +52,7 @@
 
     <h3 id="thankyou" style="display:none"> 提交成功，Ricepo感谢您的回馈！ </h3>
 
-    <form>
+    <form action="javascript: void(0)">
       <label for="category">我想要</label>
       <select id="category" name="category">
         <option value="general">给APP提出问题或建议</option>
@@ -71,7 +71,7 @@
         <input type="hidden" name="phone" value="<%= phone %>" />
       <% } %>
 
-      <input class="button-primary" id="submit"  type="button" value="提交" />
+      <input class="button-primary" id="submit"  type="button" value="Send" />
     </form>
   </div>
 
