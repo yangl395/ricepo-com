@@ -33,9 +33,10 @@
   label {
     font-weight: 400;
   }
-  input.button-primary {
+  button {
     border-color: #FF6346 !important;
     background-color: #FF6346 !important;
+    float: right;
   }
   .center {
     text-align: center;
@@ -71,7 +72,7 @@
         <input type="hidden" name="phone" value="<%= phone %>" />
       <% } %>
 
-      <input class="button-primary" id="submit"  type="button" value="Send" />
+      <button class="button" id="submit">提交</button>
     </form>
   </div>
 
@@ -95,7 +96,7 @@
             contentType: "application/json; charset=utf-8",
           })
           .done(function() {
-            $('label,select,input,textarea,p').hide();
+            $('label,select,input,textarea,p,button').hide();
             $('#thankyou').show();
           })
           .fail(function() {
